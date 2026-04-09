@@ -1,2 +1,3 @@
-filme.json
-public/filme.json
+/.env
+/vendor/
+*.log

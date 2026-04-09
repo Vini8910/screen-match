@@ -1,16 +1,31 @@
-<?php 
+<?php
 
-$filme = [
-    "nome" => $_POST['nome'],
-    "genero" => $_POST['genero'],
-    "ano" => $_POST['ano'],
-    "nota" => $_POST['nota']
-];
+require_once __DIR__ . '/../src/auth.php';
+require_once __DIR__ . '/../src/filmes.php';
 
-file_put_contents('filme.json' , json_encode($filme));
+require_auth();
 
-header(
-    'Location: sucesso.php?filme=' . urlencode($filme['nome']) .
-    '&genero=' . urlencode($filme['genero'])
-);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.php');
+    exit;
+}
+
+$titulo = trim($_POST['nome'] ?? '');
+$genero = trim($_POST['genero'] ?? '');
+$ano = (int) ($_POST['ano'] ?? 0);
+$nota = (float) ($_POST['nota'] ?? -1);
+
+if ($titulo === '' || $genero === '' || $ano < 1888 || $ano > 2100 || $nota < 0 || $nota > 10) {
+    header('Location: index.php?erro=1#cadastro');
+    exit;
+}
+
+criar_filme([
+    'title' => $titulo,
+    'year' => $ano,
+    'rating' => $nota,
+    'genre' => $genero,
+]);
+
+header('Location: index.php?sucesso=1#catalogo');
 exit;
