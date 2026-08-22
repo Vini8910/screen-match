@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $erro = 'Email ou senha inválidos.';
+    $erro = 'Email ou senha incorretos.';
 }
 
 ?>
