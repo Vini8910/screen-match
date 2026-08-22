@@ -160,7 +160,7 @@ $erro = $_GET['erro'] ?? '';
             </div>
             <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <div class="hero-pill mb-3">Catálogo pessoal</div>
+                    <div class="hero-pill mb-3">Catálogo pessoal ! </div>
                     <h1 class="hero-title mb-3">Seu ScreenMatch<br>com cara de streaming</h1>
                     <p class="lead muted mb-4">
                         Gerencie seus filmes favoritos, organize o catálogo e mantenha tudo com visual premium.
